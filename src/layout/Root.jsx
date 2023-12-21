@@ -6,15 +6,13 @@ import Headroom from 'react-headroom';
 const Root = () => {
  return (
   <>
-   <div>
-    <Headroom>
-     <Navbar></Navbar>
-    </Headroom>
-   </div>
-   <div className="min-h-screen">
+   <div className="container mx-auto">
+    {/* <Headroom> */}
+    <Navbar></Navbar>
+    {/* </Headroom> */}
     <Outlet></Outlet>
+    <Footer></Footer>
    </div>
-   <Footer></Footer>
   </>
  );
 };
