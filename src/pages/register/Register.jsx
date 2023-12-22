@@ -1,6 +1,29 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+ const location = useLocation();
+ const navigate = useNavigate();
+ const { signUp, updateUserProfile } = useContext(AuthContext);
+ const handleRegister = e => {
+  e.preventDefault();
+  const form = e.target;
+
+  const name = form.name.value;
+  const photoURL = form.photoURL.value;
+  const email = form.email.value;
+  const password = form.password.value;
+  const regInfo = { email };
+  signUp(email, password)
+   .then(() => {
+    toast.success('Successfully Logged In!');
+    navigate(location?.state ? location.state : '/');
+    updateUserProfile(name, photoURL).then().catch();
+   })
+   .catch(() => toast.error("This didn't work."));
+ };
  return (
   <div className="flex h-screen">
    {/* left Pane */}
@@ -32,13 +55,13 @@ const Register = () => {
      <div className="mt-4 text-sm text-gray-600 text-center">
       <p>or with email</p>
      </div>
-     <form action="#" method="POST" className="space-y-4">
+     <form onSubmit={handleRegister} className="space-y-4">
       {/* Your form elements go here */}
       <div>
        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
         Username
        </label>
-       <input type="text" id="username" name="username" className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
+       <input type="text" id="username" name="name" className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
       </div>
       <div>
        <label htmlFor="photoURL" className="block text-sm font-medium text-gray-700">

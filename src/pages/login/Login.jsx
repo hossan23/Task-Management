@@ -28,6 +28,20 @@ const Login = () => {
     toast.error("This didn't work.");
    });
  };
+
+ const { signIn } = useContext(AuthContext);
+ const handleLogin = e => {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.email.value;
+  const password = form.password.value;
+  signIn(email, password)
+   .then(() => {
+    toast.success('Successfully Logged In!');
+    navigate(location?.state ? location.state : '/');
+   })
+   .catch(() => toast.error("This didn't work."));
+ };
  return (
   <>
    <div className="flex h-screen">
@@ -145,7 +159,7 @@ const Login = () => {
       <div className="mt-4 text-sm text-gray-600 text-center">
        <p>or with email</p>
       </div>
-      <form action="#" method="POST" className="space-y-4">
+      <form onSubmit={handleLogin} className="space-y-4">
        {/* Your form elements go here */}
 
        <div>

@@ -57,19 +57,36 @@ const router = createBrowserRouter([
   children: [
    {
     path: 'create',
-    element: <Create />,
+    element: (
+     <PrivateRoutes>
+      <Create />
+     </PrivateRoutes>
+    ),
    },
    {
     path: 'read',
-    element: <Read />,
+    element: (
+     <PrivateRoutes>
+      <Read />
+     </PrivateRoutes>
+    ),
+    loader: () => fetch('https://task-manager-server-orcin-six.vercel.app/datas'),
    },
    {
     path: 'update',
-    element: <Update />,
+    element: (
+     <PrivateRoutes>
+      <Update />
+     </PrivateRoutes>
+    ),
    },
    {
     path: 'delete',
-    element: <Delete />,
+    element: (
+     <PrivateRoutes>
+      <Delete />
+     </PrivateRoutes>
+    ),
    },
   ],
  },

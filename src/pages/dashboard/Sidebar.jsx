@@ -5,6 +5,8 @@ import { IoIosCreate } from 'react-icons/io';
 import { MdDeleteForever } from 'react-icons/md';
 import { GrUpdate } from 'react-icons/gr';
 import { FaThList } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
+import { MdDashboard } from 'react-icons/md';
 
 const Sidebar = () => {
  const { user } = useContext(AuthContext);
@@ -20,25 +22,30 @@ const Sidebar = () => {
       </div>
      </div>
      <div id="menu" className="flex flex-col space-y-2">
+      <Link to="/" className="text-sm font-medium  py-2 px-2 bg-white text-black hover:scale-105 rounded-md transition duration-150 ease-in-out">
+       <FaHome />
+       <span>Go Back To Home</span>
+      </Link>
+      <div className="divider"></div>
       <Link to="create" className="text-sm font-medium  py-2 px-2 bg-white text-black hover:scale-105 rounded-md transition duration-150 ease-in-out">
        <IoIosCreate />
-       <span className>Create</span>
+       <span>Create</span>
       </Link>
       <div className="divider"></div>
       <Link to="read" className="text-sm font-medium  py-2 px-2 bg-white text-black hover:scale-105 rounded-md transition duration-150 ease-in-out">
        <FaThList />
-       <span className>Read</span>
+       <span>Read</span>
       </Link>
       <div className="divider"></div>
       <Link to="update" className="text-sm font-medium  py-2 px-2 bg-white text-black hover:scale-105 rounded-md transition duration-150 ease-in-out">
        <GrUpdate />
-       <span className>Update</span>
+       <span>Update</span>
       </Link>
       <div className="divider"></div>
       <Link to="delete" className="text-sm font-medium  py-2 px-2 bg-white text-black hover:scale-105 rounded-md transition duration-150 ease-in-out">
        {' '}
        <MdDeleteForever />
-       <span className>Delete</span>
+       <span>Delete</span>
       </Link>
       <div className="divider"></div>
      </div>
