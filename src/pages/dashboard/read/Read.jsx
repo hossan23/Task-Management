@@ -20,6 +20,11 @@ const Read = () => {
         <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{data?.title}</Table.Cell>
         <Table.Cell>{data?.deadline}</Table.Cell>
         <Table.Cell>{data?.priority}</Table.Cell>
+        <Table.Cell>
+         <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+          Edit
+         </a>
+        </Table.Cell>
        </Table.Row>
       </Table.Body>
      ))}
